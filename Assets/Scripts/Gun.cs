@@ -87,7 +87,7 @@ public class Gun : MonoBehaviour
                     else
                     {
                         currentAmmoInClip = data.clipSize;
-                        ammoInReserve -= amountNeeded; //idk this one 
+                        ammoInReserve -= amountNeeded; //math is hard
                     }
 
                 }
