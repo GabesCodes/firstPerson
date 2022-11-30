@@ -30,14 +30,14 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        GunType(data.gunType);
+        GunType(data.gunType); //compare current gunType against our gunDATA class string
     }
 
-    void GunType(string gunType) //complete braindead monkey code B)
+    void GunType(string gunType) //complete braindead monkey code B), idk if this is genius or stupid but im proud of it!
     {
-        switch (data.gunType)
+        switch (data.gunType) 
         {
-            case "hitscan":
+            case "hitscan": //shoots hitscan using raycasts if gunData gunType string is "hitscan". 
 
                 void Hitscan()
                 {
