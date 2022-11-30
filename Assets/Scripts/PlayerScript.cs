@@ -101,7 +101,7 @@ public class PlayerScript : MonoBehaviour
         //direction Y is then subtracted by the gravity value every frame?
         velocity.y -= gravity * Time.deltaTime;
 
-        //then we update our move vector3 y value with our calculated directionY value? 
+        //then we update our move vector3 y value with our calculated directionY value
         move.y = velocity.y;
 
         //ultimately moves our character according to our calculations from the previous move vector3 * speed * deltatime(idk this one)
