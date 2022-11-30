@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private int damage;
 
     [SerializeField]
-    private float enemySpeed;
+    public float enemySpeed;
 
     public float lookRadius = 10f;
 
