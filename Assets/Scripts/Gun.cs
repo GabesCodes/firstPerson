@@ -39,7 +39,7 @@ public class Gun : MonoBehaviour
         {
             case "hitscan": //shoots hitscan using raycasts if gunData gunType string is "hitscan". 
 
-                void Hitscan()
+                void Hitscan() // shoot a raycast from the camera, assign a var target that is equal to whatever we hit, then take dmg according to gun dmg value
                 {
                     muzzleFlash.Play();
                     RaycastHit hit;
@@ -57,7 +57,7 @@ public class Gun : MonoBehaviour
                 }
 
 
-                IEnumerator ShootHitscanGun()
+                IEnumerator ShootHitscanGun() //still barely know what IEnumerators are, but they repeat things
                 {
                     Hitscan();
                     yield return new WaitForSeconds(data.fireRate);
@@ -69,10 +69,6 @@ public class Gun : MonoBehaviour
                     canShoot = false;
                     currentAmmoInClip--;
                     StartCoroutine(ShootHitscanGun());
-                    if (data.gunType == "Projectile")
-                    {
-                        Debug.Log("projectile");
-                    }
                 }
 
                 else if (Input.GetKeyDown(KeyCode.R) && currentAmmoInClip < data.clipSize && ammoInReserve > 0)
