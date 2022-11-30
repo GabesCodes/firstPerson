@@ -58,7 +58,7 @@ public class Gun : MonoBehaviour
 
                 }
 
-
+                //still struggling on learning ienumerators, but its for repeating things.
                 IEnumerator ShootHitscanGun()
                 {
                     Hitscan();
