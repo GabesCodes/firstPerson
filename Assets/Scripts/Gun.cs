@@ -44,6 +44,8 @@ public class Gun : MonoBehaviour
                     muzzleFlash.Play();
                     RaycastHit hit;
 
+                    //shoot a raycast, if we hit something return true, if true, get whatever object it hit and store info to target var, if it has health, dmg it 
+
                     if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, data.range))
                     {
                         Debug.Log(hit.transform.name);
