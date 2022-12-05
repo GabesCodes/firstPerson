@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Spawn();
     }
 
     private void Spawn()
@@ -29,9 +29,10 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Time.time >= nextSpawnTime)
         {
-            Spawn();
+            //Spawn();
             nextSpawnTime = Time.time + respawnRate;
         }
     }

@@ -27,6 +27,8 @@ public class PlayerScript : MonoBehaviour
     public float xPos;
     public float zPos;
     public Vector3 velocity;
+
+    float playerHp;
    
     private CharacterController ch;
 
@@ -34,7 +36,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         ch = gameObject.GetComponent<CharacterController>();
-        health = gameObject.GetComponent<Health>();
+        playerHp = gameObject.GetComponent<Health>().health;
 
         
 
@@ -47,7 +49,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(playerHp);
         //collect input
         xPos = Input.GetAxis("Horizontal"); //x is horizontal, i.e A and D key 
         zPos = Input.GetAxis("Vertical"); //z is vertical, i.e W and S key, 

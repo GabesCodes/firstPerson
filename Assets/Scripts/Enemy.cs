@@ -28,13 +28,17 @@ public class Enemy : MonoBehaviour
         SetEnemyValues();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        float enemyHealh = GetComponent<Health>().health;
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
-         ChaseAlways();
+        ChaseAlways();
+        Annoy();
     }
 
     void FaceTarget()
@@ -48,6 +52,15 @@ public class Enemy : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
+    private void Annoy()
+    {
+        float enemyHealh = GetComponent<Health>().health;
+        if(enemyHealh <= 1)
+        {
+            Debug.Log("I have a family");
+        }
     }
 
     private void SetEnemyValues()

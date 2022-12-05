@@ -15,6 +15,8 @@ public class Gun : MonoBehaviour
 
     public ParticleSystem muzzleFlash;
 
+    public float thrust = 1.0f;
+
     //public GameObject impactEffect;
 
     // Start is called before the first frame update
@@ -23,14 +25,15 @@ public class Gun : MonoBehaviour
         currentAmmoInClip = data.clipSize;
         ammoInReserve = data.reservedAmmoCapacity;
         canShoot = true;
-
-
+        GunType(data.gunType);
+        //compare current gunType against our gunDATA class string
     }
 
     // Update is called once per frame
     private void Update()
     {
-        GunType(data.gunType); //compare current gunType against our gunDATA class string
+         
+
     }
 
     void GunType(string gunType) //complete braindead monkey code B), idk if this is genius or stupid but im proud of it!
@@ -71,10 +74,6 @@ public class Gun : MonoBehaviour
                     canShoot = false;
                     currentAmmoInClip--;
                     StartCoroutine(ShootHitscanGun());
-                    if (data.gunType == "Projectile")
-                    {
-                        Debug.Log("projectile");
-                    }
                 }
 
                 else if (Input.GetKeyDown(KeyCode.R) && currentAmmoInClip < data.clipSize && ammoInReserve > 0)
@@ -93,6 +92,7 @@ public class Gun : MonoBehaviour
                     }
 
                 }
+
             break;
 
 
