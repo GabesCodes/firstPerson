@@ -5,7 +5,13 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     private Rigidbody rb;
-    public int damage = 1;
+    private GunData data;
+
+    public GameObject crossbow;
+
+
+
+
     //public Rigidbody arrow;
 
     // Start is called before the first frame update
@@ -13,6 +19,8 @@ public class Arrow : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        crossbow = WeaponManager.instance.crossbow.gameObject;
+
     }
 
     private void Update()
@@ -26,8 +34,11 @@ public class Arrow : MonoBehaviour
         if(collision.gameObject.GetComponent<Health>())
         {
             Debug.Log("foo");
-            collision.gameObject.GetComponent<Health>().TakeDamage(1);
+            Destroy(gameObject);
+            collision.gameObject.GetComponent<Health>().TakeDamage(crossbow.GetComponent<Crossbow>().arrowDamage);
+            //seriously need to stop using GetComponent, like down the line this is going to fk you up on performance probably
+            //from research, getcomponent searches A LIST EVERY TIME you call it to find what you're looking for
         }
-        Destroy(gameObject); //destroys arrow if it hits something that doesn't have health
+        
     }
 }
