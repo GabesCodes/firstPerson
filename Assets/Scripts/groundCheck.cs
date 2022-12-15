@@ -30,15 +30,15 @@ public class groundCheck : MonoBehaviour
         if (hitFloor)
         {
             isGrounded = true;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down), Color.green);
-            Debug.Log(hitFloor);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down), Color.green);
+            //Debug.Log(hitFloor);
             isGroundedInt = 1;
         }
         else if(!hitFloor)
         {
             isGrounded = false;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down), Color.red);
-            Debug.Log(hitFloor);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down), Color.red);
+            //Debug.Log(hitFloor);
             isGroundedInt = 0;
         }
     }

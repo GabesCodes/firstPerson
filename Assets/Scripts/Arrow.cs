@@ -33,11 +33,25 @@ public class Arrow : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<Health>())
         {
-            Debug.Log("foo");
+            Debug.Log("hit enemy");
             Destroy(gameObject);
-            collision.gameObject.GetComponent<Health>().TakeDamage(crossbow.GetComponent<Crossbow>().arrowDamage);
-            //seriously need to stop using GetComponent, like down the line this is going to fk you up on performance probably
-            //from research, getcomponent searches A LIST EVERY TIME you call it to find what you're looking for
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                return;
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Health>().TakeDamage(crossbow.GetComponent<Crossbow>().arrowDamage);
+                //seriously need to stop using GetComponent, like down the line this is going to fk you up on performance probably
+                //from research, getcomponent searches A LIST EVERY TIME you call it to find what you're looking for
+
+            }
+        }
+
+        if(collision.gameObject != null) //just reports what we're hitting if its not an enemy for debugging
+        {
+            Debug.Log("This is a " + collision.gameObject.name);
+            Destroy(this.gameObject);
         }
         
     }

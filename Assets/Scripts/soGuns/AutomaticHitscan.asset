@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a02e14ef1c19ad4ea2b09cacc01d8cd, type: 3}
-  m_Name: AdvancedEnemy
+  m_Script: {fileID: 11500000, guid: e6c7a1e90a671d6478fa1a2617876bd7, type: 3}
+  m_Name: AutomaticHitscan
   m_EditorClassIdentifier: 
-  hp: 10
+  gunType: AutomaticHitscan
   damage: 5
-  enemySpeed: 4
+  range: 100
+  fireRate: 0.1
+  clipSize: 30
+  reservedAmmoCapacity: 270

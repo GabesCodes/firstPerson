@@ -11,4 +11,5 @@ public class EnemyData : ScriptableObject // holds data we can change
     public int hp;
     public int damage;
     public float enemySpeed;
+    public float lookRadius;
 }

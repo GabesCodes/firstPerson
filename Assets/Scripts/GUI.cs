@@ -24,13 +24,6 @@ public class GUI : MonoBehaviour
         player = PlayerManager.instance.player.gameObject;
         crossbow = WeaponManager.instance.crossbow.gameObject;
         pistol = WeaponManager.instance.pistol.gameObject;
-
-        //gun = player.GetComponent<Gun>();
-        //crossbow = GetComponent<Crossbow>();
-        //arrowDisplay.text = crossbow.currentArrowAmmo.ToString();
-        
-
-
     }
 
     // Update is called once per frame
@@ -39,14 +32,6 @@ public class GUI : MonoBehaviour
         arrowDisplay.text = crossbow.GetComponent<Crossbow>().currentArrowAmmo.ToString() + slash + crossbow.GetComponent<Crossbow>().reserveArrowAmmo.ToString();
         bulletDisplay.text = pistol.GetComponent<Gun>().currentAmmoInClip.ToString() + slash + pistol.GetComponent<Gun>().ammoInReserve.ToString();
         healthDisplay.text = "Current health: " + player.GetComponent<Health>().health.ToString();
-        //{
-          //  if(player.GetComponent<Health>().health <= 0)
-            //{
-              //  healthDisplay.text = "You are dead! X.X";
-            //}
-       // }
-
-        //isGrounded.text = "Is Grounded: " + isGroundedInt.ToString();
         
     }
 }

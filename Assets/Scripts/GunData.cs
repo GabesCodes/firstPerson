@@ -9,7 +9,7 @@ using UnityEngine;
 public class GunData : ScriptableObject // holds data we can change
 {
     public string gunType;
-    public int damage;
+    public float damage;
     public float range;
     public float fireRate;
     public int clipSize;

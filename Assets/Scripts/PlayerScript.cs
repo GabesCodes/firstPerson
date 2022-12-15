@@ -36,12 +36,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         ch = gameObject.GetComponent<CharacterController>();
-        playerHp = gameObject.GetComponent<Health>().health;
-
-        
-
-        //Health.health = 3;
-        isGameOver = false;
+        playerHp = gameObject.GetComponent<Health>().health;        
         isDead = false;
     }
     
@@ -92,7 +87,7 @@ public class PlayerScript : MonoBehaviour
         void Sprint()
         {
             currentSpeed = walkSpeed + sprintModifier;
-            Debug.Log("running!");
+            //Debug.Log("running!");
         }
    
 

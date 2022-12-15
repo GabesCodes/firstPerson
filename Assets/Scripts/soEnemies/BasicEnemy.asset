@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a02e14ef1c19ad4ea2b09cacc01d8cd, type: 3}
-  m_Name: TankEnemy
+  m_Name: BasicEnemy
   m_EditorClassIdentifier: 
-  hp: 20
-  damage: 10
-  enemySpeed: 1
+  hp: 10
+  damage: 5
+  enemySpeed: 3
+  lookRadius: 10

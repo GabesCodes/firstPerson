@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     public float enemySpeed;
 
-    public float lookRadius = 10f;
+    public float lookRadius;
 
     NavMeshAgent agent;
     Transform target;
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     {
         
         ChaseAlways();
-        Annoy();
+        
     }
 
     void FaceTarget()
@@ -54,20 +54,12 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
-    private void Annoy()
-    {
-        float enemyHealh = GetComponent<Health>().health;
-        if(enemyHealh <= 1)
-        {
-            Debug.Log("I have a family");
-        }
-    }
-
     private void SetEnemyValues()
     {
         GetComponent<Health>().SetHealth(data.hp, data.hp);
         damage = data.damage;
         enemySpeed = data.enemySpeed;
+        lookRadius = data.lookRadius;
     }
 
     private void ChaseAlways()
@@ -75,8 +67,9 @@ public class Enemy : MonoBehaviour
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance <= lookRadius)
         {
-            agent.speed = enemySpeed;
-            agent.SetDestination(target.position);
+           // agent.speed = enemySpeed;
+            //agent.SetDestination(target.position);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, enemySpeed * Time.deltaTime);
 
             if (distance <= agent.stoppingDistance)
             {
@@ -86,19 +79,15 @@ public class Enemy : MonoBehaviour
 
             }
         }
-        //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, enemySpeed * Time.deltaTime);
     }
-
-    private void OnTriggerEnter(Collider collider) 
+    private void OnCollisionEnter(Collision collision)
     {
-        //if (collider.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if (collider.GetComponent<Health>() != null)
-            {
-                collider.GetComponent<Health>().TakeDamage(damage);
-                // this.GetComponent<Health>().Damage(5);
-            }
-
+            Debug.Log("touching player");
+            collision.gameObject.GetComponent<Health>().TakeDamage(1);
+   
         }
+
     }
 }

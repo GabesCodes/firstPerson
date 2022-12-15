@@ -1,26 +1,31 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Crossbow : MonoBehaviour
 {
     public GameObject arrowPrefab;
     public Transform ArrowSpawn;
-    public float arrowSpeed;
 
-    public int arrowDamage;
+    public float arrowSpeed;
+    public float arrowDamage;
     public int currentArrowAmmo;
     public int reserveArrowAmmo;
+
+    public Vector3 defaultPosition;
+    public Vector3 aimingPosition;
+    public float aimSmoothing;
+
 
     [SerializeField]
     private bool canShoot;
     
-
     [SerializeField]
     private GunData data;
 
 
     // Start is called before the first frame update
+
+
     void Start()
     {
         arrowSpeed = data.range;
@@ -28,8 +33,6 @@ public class Crossbow : MonoBehaviour
         currentArrowAmmo = data.clipSize;
         reserveArrowAmmo = data.reservedAmmoCapacity;
         canShoot = true;
-
-
     }
 
     // Update is called once per frame
@@ -38,7 +41,7 @@ public class Crossbow : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canShoot && currentArrowAmmo > 0)
         {
             canShoot = false;
-            currentArrowAmmo--;
+            //fix bug where if you shoot then switch guns before canShoot is true you're fked.
             StartCoroutine(ShootArrowIE());
 
         }
@@ -57,10 +60,19 @@ public class Crossbow : MonoBehaviour
                 currentArrowAmmo = data.clipSize;
                 reserveArrowAmmo -= amountNeeded; //math is hard
             }
-
         }
+        if (Input.GetKeyDown(KeyCode.CapsLock))
+        {
+            canShoot = true;
+            Debug.Log("gun jam fixed");
+        }
+
+        AimDownSights();
+        
     }
    
+    
+
     IEnumerator ShootArrowIE()
     {
         ShootArrow();
@@ -75,5 +87,18 @@ public class Crossbow : MonoBehaviour
         arrowObj.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, arrowSpeed), ForceMode.Force);
         Destroy(arrowObj, 3f);
     }
-  
+
+    void AimDownSights()
+    {
+        Vector3 target = defaultPosition;
+        if (Input.GetMouseButton(1))
+
+            target = aimingPosition;
+
+        Vector3 desiredPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime * aimSmoothing);
+        transform.localPosition = desiredPosition;
+
+    }
 }
+
+

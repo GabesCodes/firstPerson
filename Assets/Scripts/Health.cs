@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField]
     public float health;
 
-    private int max_health = 10;
+    private float max_health = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -16,13 +16,13 @@ public class Health : MonoBehaviour
         
     }
 
-    public void SetHealth(int maxHealth, int health)
+    public void SetHealth(float maxHealth, float health)
     {
         this.max_health = maxHealth;
         this.health = health;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         this.health -= damage;
 
@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("I am Dead!");
+        //Debug.Log("I am Dead!");
         Destroy(gameObject);
 
     }
